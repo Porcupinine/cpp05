@@ -3,6 +3,7 @@ project(cpp05)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(cpp05 main.cpp
+add_executable(ex00
 		ex00/Bureaucrat.cpp
-		ex00/Bureaucrat.h)
+		ex00/Bureaucrat.h
+		ex00/main.cpp)
