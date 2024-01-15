@@ -30,14 +30,14 @@ public:
 	void decrementGrade();
 class GradeTooHighException : public std::exception {
 public:
-	const char * what () {
-		return (char *)"Too smart for this!\n";
+	const char * what () const throw() {
+		return (const char *)"too smart for this!";
 	}
 };
 class GradeTooLowException : public std:: exception {
 public:
-	const char * what () {
-		return (char*)"Too dumb for this!\n";
+	const char * what () const throw() {
+		return (const char*)"too dumb for this!";
 	}
 	};
 private:
