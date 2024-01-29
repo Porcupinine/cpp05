@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Bureaucrat.h                                       :+:    :+:            */
+/*   Form.h                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: laura <laura@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/01/05 15:26:20 by laura         #+#    #+#                 */
-/*   Updated: 2024/01/05 15:26:20 by laura         ########   odam.nl         */
+/*   Created: 2024/01/26 14:02:06 by laura         #+#    #+#                 */
+/*   Updated: 2024/01/26 14:02:06 by laura         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CPP05_BUREAUCRAT_H
-#define CPP05_BUREAUCRAT_H
+#ifndef CPP05_FORM_H
+#define CPP05_FORM_H
 
-#include <string>
-#include <exception>
 
-class Bureaucrat {
+#include <string>*
+class Bureaucrat;
+
+class Form {
 public:
-	Bureaucrat() = default;
-	Bureaucrat(std::string name, int grade);
-	~Bureaucrat() = default;
-	Bureaucrat(const Bureaucrat& cp);
-	Bureaucrat& operator=(const Bureaucrat& cp);
+	Form() = default;
+	~Form() = default;
+	Form(std::string  name, int gradeToSign, int gradeToExec);
+	Form(const Form& cp);
+	Form& operator=(const Form& cp);
 
 	std::string getName() const;
-	size_t getGrade() const;
-	void incrementGrade();
-	void decrementGrade();
+	bool getSignatureStatus() const;
+	int getGradeToSign() const;
+	int getGradeToExec() const;
+
+	void beSigned(const Bureaucrat& bu);
+
 class GradeTooHighException : public std::exception {
 public:
 	const char * what () const noexcept override {
@@ -39,12 +43,14 @@ public:
 	const char * what () const noexcept override {
 		return (const char*)"too dumb for this!";
 	}
-	};
-private:
-	const std::string m_name;
-	int m_grade{};
 };
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& bu);
+
+private:
+	std::string const m_name{};
+	bool m_signature{false};
+	int const m_gradeToSign{};
+	int const m_gradeToExec{};
+};
 
 
-#endif //CPP05_BUREAUCRAT_H
+#endif //CPP05_FORM_H

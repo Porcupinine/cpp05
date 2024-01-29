@@ -20,7 +20,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &cp) : m_grade(cp.m_grade), m_name(cp.m_
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &cp) {
 	m_grade = cp.m_grade;
 	auto& ref = const_cast<std::string&>(m_name);
-	ref = cp.m_name;
+	ref = cp.m_name; //TODO????
 	return *this;
 }
 

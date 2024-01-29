@@ -42,7 +42,7 @@ public:
 	};
 private:
 	const std::string m_name;
-	int m_grade{};
+	int m_grade; // 1-150
 };
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bu);
 
