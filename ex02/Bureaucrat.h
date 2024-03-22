@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   AForm.h                                             :+:    :+:            */
+/*   Bureaucrat.h                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: laura <laura@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/01/26 14:02:06 by laura         #+#    #+#                 */
-/*   Updated: 2024/01/26 14:02:06 by laura         ########   odam.nl         */
+/*   Created: 2024/01/05 15:26:20 by laura         #+#    #+#                 */
+/*   Updated: 2024/01/05 15:26:20 by laura         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CPP05_FORM_H
-#define CPP05_FORM_H
-
+#ifndef CPP05_BUREAUCRAT_H
+#define CPP05_BUREAUCRAT_H
 
 #include <string>
-class Bureaucrat;
+#include <exception>
 
-class AForm {
+class AForm;
+
+class Bureaucrat {
 public:
-	AForm() = default;
-	~AForm() = default;
-	AForm(std::string  name, int gradeToSign, int gradeToExec);
-	AForm(const AForm& cp);
-	AForm& operator=(const AForm& cp) = delete;
+	Bureaucrat() = default;
+	Bureaucrat(std::string name, int grade);
+	~Bureaucrat() = default;
+	Bureaucrat(const Bureaucrat& cp);
+	Bureaucrat& operator=(const Bureaucrat& cp);
 
 	std::string getName() const;
-	bool getSignatureStatus() const;
-	size_t getGradeToSign() const;
-	size_t getGradeToExec() const;
-
-	void beSigned(const Bureaucrat& bu) const;
-	void signForm(const Bureaucrat &bu);
-
+	size_t getGrade() const;
+	void incrementGrade();
+	void decrementGrade();
+	void executeForm(AForm const & form) const;
 class GradeTooHighException : public std::exception {
 public:
 	const char * what () const noexcept override {
@@ -44,13 +42,12 @@ public:
 	const char * what () const noexcept override {
 		return (const char*)"too dumb for this!";
 	}
-};
-
+	};
 private:
-	std::string const m_name{};
-	bool m_signature{false};
-	size_t const m_gradeToSign{};
-	size_t const m_gradeToExec{};
+	const std::string m_name;
+	int m_grade; // 1-150
 };
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bu);
 
-#endif //CPP05_FORM_H
+
+#endif //CPP05_BUREAUCRAT_H

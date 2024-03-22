@@ -12,12 +12,12 @@
 
 #include <iostream>
 #include "Bureaucrat.h"
-#include "Form.h"
+#include "AForm.h"
+#include "ShrubberyCreationForm.h"
 
 int main () {
 	Bureaucrat b1("Burro", 50);
 	Bureaucrat b2("Crata", 10);
-	AForm f1("AForm", 25, 11);
-	f1.signForm(b1);
-	f1.signForm(b2);
+	ShrubberyCreationForm f1("Form");
+	f1.execute(b1);
 }

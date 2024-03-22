@@ -14,3 +14,11 @@ add_executable(ex01
 		ex01/Bureaucrat.cpp
 		ex01/main.cpp
 )
+
+add_executable(ex02
+		ex02/AForm.cpp
+		ex02/ShrubberyCreationForm.cpp
+		ex02/ShrubberyCreationForm.h
+		ex02/main.cpp
+		ex02/Bureaucrat.cpp
+		ex02/ShrubberyCreationForm.cpp)

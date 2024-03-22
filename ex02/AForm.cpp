@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.h"
+#include "AForm.h"
 #include "Bureaucrat.h"
 
 #include <utility>
@@ -37,6 +37,12 @@ void AForm::signForm(const Bureaucrat &bu) {
 	}
 	m_signature = true;
 	std::cout<<bu.getName()<<" signed "<< this->m_name<< "\n";
+}
+
+void AForm::beExecuted(const Bureaucrat &bu) const {
+	if (bu.getGrade() > m_gradeToExec) {
+		throw GradeTooLowException();
+	}
 }
 
 std::string AForm::getName() const {
