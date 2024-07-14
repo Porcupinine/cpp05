@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.h"
+#include "AForm.h"
 #include <iostream>
-#include <utility>
 
 Bureaucrat::Bureaucrat(const Bureaucrat &cp) : m_grade(cp.m_grade), m_name(cp.m_name) {
 	std::cout<<"Bureaucrat "<<m_name<<" is ready to make your life harder\n";
@@ -47,7 +47,7 @@ void Bureaucrat::decrementGrade() {
 		m_grade++;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : m_name(std::move(name)) {
+Bureaucrat::Bureaucrat(std::string name, int grade) : m_name(name) {
 	if (grade < 1)
 		throw GradeTooHighException();
 	else if (grade > 150)
@@ -55,6 +55,10 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : m_name(std::move(name)) {
 	else
 		m_grade = grade;
 	std::cout<<"Bureaucrat "<<m_name<<" is ready to make your life harder\n";
+}
+
+void Bureaucrat::executeForm(const AForm &form) const {
+	form.execute(*this);
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bu) {

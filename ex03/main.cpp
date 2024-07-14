@@ -16,10 +16,15 @@
 #include "ShrubberyCreationForm.h"
 #include "RobotomyRequestForm.h"
 #include "PresidentialPardonForm.h"
+#include "Intern.h"
 
 int main () {
-	Bureaucrat b1("Burro", 50);
-	Bureaucrat b2("Crata", 1);
+	Bureaucrat b1("Burro", 150);
+	Bureaucrat b2("Crata", 150);
+	Intern i1;
+
+	i1.makeForm("PresidentialPardon", "PretyPlease");
+
 	ShrubberyCreationForm f1("Berry");
 	RobotomyRequestForm f2("Will");
 	PresidentialPardonForm f3("Press");

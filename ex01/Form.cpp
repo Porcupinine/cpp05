@@ -54,3 +54,10 @@ size_t AForm::getGradeToSign() const {
 size_t AForm::getGradeToExec() const {
 	return m_gradeToExec;
 }
+std::ostream& operator<<(std::ostream& os, const AForm& form) {
+	os<<"Form name: "<<form.getName()<<"\n"
+	<<"Status: "<<form.getSignatureStatus()<<"\n"
+	<<"Grade to sign: "<<form.getGradeToSign()<<"\n"
+	<<"Grade to execute: "<<form.getGradeToExec()<<"\n";
+	return os;
+}

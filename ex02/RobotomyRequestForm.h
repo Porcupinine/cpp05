@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ShrubberyCreationForm.h                            :+:    :+:            */
+/*   RobotomyRequestForm.h                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: laura <laura@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/03/12 15:40:03 by laura         #+#    #+#                 */
-/*   Updated: 2024/03/12 15:40:03 by laura         ########   odam.nl         */
+/*   Created: 2024/07/14 10:21:20 by laura         #+#    #+#                 */
+/*   Updated: 2024/07/14 10:21:20 by laura         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CPP05_SHRUBBERYCREATIONFORM_H
-#define CPP05_SHRUBBERYCREATIONFORM_H
+#ifndef CPP05_ROBOTOMYREQUESTFORM_H
+#define CPP05_ROBOTOMYREQUESTFORM_H
 
+
+#include <string>
+#include <random>
 #include "AForm.h"
 
-class ShrubberyCreationForm : public AForm {
+class RobotomyRequestForm : public AForm {
 public:
-	ShrubberyCreationForm() = delete;
-	~ShrubberyCreationForm() = default;
-	explicit ShrubberyCreationForm (std::string target);
-	ShrubberyCreationForm(ShrubberyCreationForm& cp) = delete;
-	ShrubberyCreationForm& operator=(ShrubberyCreationForm& cp) = delete;
+	RobotomyRequestForm() = delete;
+	~RobotomyRequestForm() = default;
+	explicit RobotomyRequestForm(std::string  target);
+	RobotomyRequestForm(const RobotomyRequestForm& cp) = default;
+	RobotomyRequestForm& operator=(const RobotomyRequestForm& cp) = delete;
 
 	void execute(Bureaucrat const & executor) const override;
 	void executeForm(AForm const & form) const override;
+
 private:
 	std::string m_target;
+	mutable std::default_random_engine e1;
+	mutable std::uniform_int_distribution<int> uniform_dist;
 };
 
 
-#endif //CPP05_SHRUBBERYCREATIONFORM_H
+#endif //CPP05_ROBOTOMYREQUESTFORM_H

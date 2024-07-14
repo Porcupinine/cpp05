@@ -22,7 +22,7 @@ class AForm {
 		AForm() = default;
 		~AForm() = default;
 		AForm(std::string  name, int gradeToSign, int gradeToExec);
-		AForm(const AForm& cp);
+		AForm(const AForm& cp) = default;
 		AForm& operator=(const AForm& cp) = delete;
 
 		std::string getName() const;
@@ -32,8 +32,11 @@ class AForm {
 
 		void beSigned(const Bureaucrat& bu) const;
 		void signForm(const Bureaucrat &bu);
+		void beExecuted(const Bureaucrat &bu) const;
+		virtual void execute(Bureaucrat const & executor) const = 0;
+		virtual void executeForm(AForm const & form) const = 0;
 
-		class GradeTooHighException : public std::exception {
+	class GradeTooHighException : public std::exception {
 		public:
 			const char * what () const noexcept override {
 				return (const char *)"too smart for this!";

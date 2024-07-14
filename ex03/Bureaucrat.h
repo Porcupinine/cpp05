@@ -16,6 +16,8 @@
 #include <string>
 #include <exception>
 
+class AForm;
+
 class Bureaucrat {
 public:
 	Bureaucrat() = default;
@@ -28,6 +30,7 @@ public:
 	size_t getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
+	void executeForm(AForm const & form) const;
 class GradeTooHighException : public std::exception {
 public:
 	const char * what () const noexcept override {
@@ -42,11 +45,9 @@ public:
 	};
 private:
 	const std::string m_name;
-	int m_grade{};
+	int m_grade; // 1-150
 };
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bu);
-
-//TODO throw header
 
 
 #endif //CPP05_BUREAUCRAT_H

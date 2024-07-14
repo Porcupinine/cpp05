@@ -51,7 +51,11 @@ void ShrubberyCreationForm::executeForm(const AForm &form) const{
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 	if (this->getSignatureStatus() && executor.getGrade() <= this->getGradeToExec()) {
 		this->executeForm(*this);
-		return;
 	}
-	throw GradeTooLowException();
+	else
+		throw GradeTooLowException();
+}
+
+AForm *ShrubberyCreationForm::makeShrubberyForm(const std::string &target) {
+	return new ShrubberyCreationForm(target);
 }

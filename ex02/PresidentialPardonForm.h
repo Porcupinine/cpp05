@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ShrubberyCreationForm.h                            :+:    :+:            */
+/*   PresidentialPardonForm.h                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: laura <laura@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/03/12 15:40:03 by laura         #+#    #+#                 */
-/*   Updated: 2024/03/12 15:40:03 by laura         ########   odam.nl         */
+/*   Created: 2024/07/14 10:21:32 by laura         #+#    #+#                 */
+/*   Updated: 2024/07/14 10:21:32 by laura         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CPP05_SHRUBBERYCREATIONFORM_H
-#define CPP05_SHRUBBERYCREATIONFORM_H
+#ifndef CPP05_PRESIDENTIALPARDONFORM_H
+#define CPP05_PRESIDENTIALPARDONFORM_H
 
+
+#include <string>
+#include "Bureaucrat.h"
 #include "AForm.h"
 
-class ShrubberyCreationForm : public AForm {
+class PresidentialPardonForm : public AForm {
 public:
-	ShrubberyCreationForm() = delete;
-	~ShrubberyCreationForm() = default;
-	explicit ShrubberyCreationForm (std::string target);
-	ShrubberyCreationForm(ShrubberyCreationForm& cp) = delete;
-	ShrubberyCreationForm& operator=(ShrubberyCreationForm& cp) = delete;
+	PresidentialPardonForm() = delete;
+	~PresidentialPardonForm() = default;
+	explicit PresidentialPardonForm(std::string target);
+	PresidentialPardonForm(const PresidentialPardonForm& cp) = default;
+	PresidentialPardonForm& operator=(const PresidentialPardonForm& cp) = delete;
 
 	void execute(Bureaucrat const & executor) const override;
 	void executeForm(AForm const & form) const override;
+
 private:
 	std::string m_target;
 };
 
 
-#endif //CPP05_SHRUBBERYCREATIONFORM_H
+#endif //CPP05_PRESIDENTIALPARDONFORM_H
