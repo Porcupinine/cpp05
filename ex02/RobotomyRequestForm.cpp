@@ -21,14 +21,6 @@ RobotomyRequestForm::RobotomyRequestForm(std::string  target) : AForm("Robot", 7
 	uniform_dist = std::uniform_int_distribution<int>(0, 1);
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &cp) {
-
-}
-
-RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &cp) {
-	return *this;
-}
-
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const {
 	if (this->getSignatureStatus() && executor.getGrade() <= this->getGradeToExec()) {
 		this->executeForm(*this);

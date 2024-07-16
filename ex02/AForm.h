@@ -20,7 +20,7 @@ class Bureaucrat;
 class AForm {
 	public:
 		AForm() = default;
-		~AForm() = default;
+		virtual ~AForm() = default;
 		AForm(std::string  name, int gradeToSign, int gradeToExec);
 		AForm(const AForm& cp);
 		AForm& operator=(const AForm& cp) = delete;

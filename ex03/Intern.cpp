@@ -16,7 +16,7 @@
 #include "ShrubberyCreationForm.h"
 #include "Intern.h"
 
-AForm *Intern::makeForm(std::string formName, std::string target) {
+AForm *Intern::makeForm(const std::string& formName, const std::string& target) {
 	form_pair AForms[3];
 	AForms[0].str = "PresidentialPardon";
 	AForms[0].func = &PresidentialPardonForm::makePresidentialForm;
@@ -25,10 +25,10 @@ AForm *Intern::makeForm(std::string formName, std::string target) {
 	AForms[2].str = "ShrubberyCreation";
 	AForms[2].func = &ShrubberyCreationForm::makeShrubberyForm;
 
-	for (auto &AForm: AForms) {
-		if (AForm.str == target) {
+	for (auto & AForm : AForms) {
+		if (AForm.str == formName) {
 			std::cout<<"Intern creates: "<<formName<<"\n";
-			return reinterpret_cast<class AForm *>(AForm.func);
+			return AForm.func(target);
 		}
 	}
 	std::cout<<"This intern have no imagination and this form does not exist!\n";

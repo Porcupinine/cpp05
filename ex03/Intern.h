@@ -19,10 +19,10 @@ class Intern {
 public:
 	Intern() = default;
 	~Intern() = default;
-	Intern(const Intern& cp) = delete;
+	Intern(const Intern& cp) = default;
 	Intern& operator=(const Intern& cp) = delete;
 
-	AForm* makeForm(std::string formName, std::string target);
+	static AForm* makeForm(const std::string& formName, const std::string& target);
 };
 
 typedef struct my_pair {
