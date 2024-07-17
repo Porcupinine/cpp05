@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   AForm.cpp                                           :+:    :+:            */
+/*   Form.cpp                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: laura <laura@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
@@ -16,18 +16,18 @@
 #include <utility>
 #include <iostream>
 
-AForm::AForm(std::string  name, int gradeToSign, int gradeToExec) : m_name(std::move(name)), m_gradeToSign(gradeToSign), m_gradeToExec(gradeToExec) {
+Form::Form(std::string  name, int gradeToSign, int gradeToExec) : m_name(std::move(name)), m_gradeToSign(gradeToSign), m_gradeToExec(gradeToExec) {
 }
 
-AForm::AForm(const AForm &cp) : m_name(cp.m_name), m_gradeToSign(cp.m_gradeToSign), m_gradeToExec(cp.m_gradeToExec) {
+Form::Form(const Form &cp) : m_name(cp.m_name), m_gradeToSign(cp.m_gradeToSign), m_gradeToExec(cp.m_gradeToExec) {
 }
 
-void AForm::beSigned(const Bureaucrat &bu) const {
+void Form::beSigned(const Bureaucrat &bu) const {
 	if (bu.getGrade() > m_gradeToSign)
 		throw GradeTooLowException();
 }
 
-void AForm::signForm(const Bureaucrat &bu) {
+void Form::signForm(const Bureaucrat &bu) {
 	try {
 		this->beSigned(bu);
 	}
@@ -39,22 +39,22 @@ void AForm::signForm(const Bureaucrat &bu) {
 	std::cout<<bu.getName()<<" signed "<< this->m_name<< "\n";
 }
 
-std::string AForm::getName() const {
+std::string Form::getName() const {
 	return m_name;
 }
 
-bool AForm::getSignatureStatus() const {
+bool Form::getSignatureStatus() const {
 	return m_signature;
 }
 
-size_t AForm::getGradeToSign() const {
+size_t Form::getGradeToSign() const {
 	return m_gradeToSign;
 }
 
-size_t AForm::getGradeToExec() const {
+size_t Form::getGradeToExec() const {
 	return m_gradeToExec;
 }
-std::ostream& operator<<(std::ostream& os, const AForm& form) {
+std::ostream& operator<<(std::ostream& os, const Form& form) {
 	os<<"Form name: "<<form.getName()<<"\n"
 	<<"Status: "<<form.getSignatureStatus()<<"\n"
 	<<"Grade to sign: "<<form.getGradeToSign()<<"\n"

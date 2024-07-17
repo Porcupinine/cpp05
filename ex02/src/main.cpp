@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 
 #include <iostream>
-#include "Bureaucrat.h"
-#include "AForm.h"
-#include "ShrubberyCreationForm.h"
-#include "RobotomyRequestForm.h"
-#include "PresidentialPardonForm.h"
+#include "../includes/Bureaucrat.h"
+#include "../includes/AForm.h"
+#include "../includes/ShrubberyCreationForm.h"
+#include "../includes/RobotomyRequestForm.h"
+#include "../includes/PresidentialPardonForm.h"
 
 int main () {
 	Bureaucrat b1("Burro", 50);

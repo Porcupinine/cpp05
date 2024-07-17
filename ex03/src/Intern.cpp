@@ -11,10 +11,10 @@
 /* ************************************************************************** */
 
 #include <iostream>
-#include "PresidentialPardonForm.h"
-#include "RobotomyRequestForm.h"
-#include "ShrubberyCreationForm.h"
-#include "Intern.h"
+#include "../includes/PresidentialPardonForm.h"
+#include "../includes/RobotomyRequestForm.h"
+#include "../includes/ShrubberyCreationForm.h"
+#include "../includes/Intern.h"
 
 AForm *Intern::makeForm(const std::string& formName, const std::string& target) {
 	form_pair AForms[3];

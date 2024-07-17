@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   AForm.h                                             :+:    :+:            */
+/*   Form.h                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: laura <laura@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
@@ -17,13 +17,13 @@
 #include <string>
 class Bureaucrat;
 
-class AForm {
+class Form {
 	public:
-		AForm() = default;
-		~AForm() = default;
-		AForm(std::string  name, int gradeToSign, int gradeToExec);
-		AForm(const AForm& cp);
-		AForm& operator=(const AForm& cp) = delete;
+		Form() = default;
+		~Form() = default;
+		Form(std::string  name, int gradeToSign, int gradeToExec);
+		Form(const Form& cp);
+		Form& operator=(const Form& cp) = delete;
 
 		std::string getName() const;
 		bool getSignatureStatus() const;
@@ -52,6 +52,6 @@ class AForm {
 		size_t const m_gradeToSign{};
 		size_t const m_gradeToExec{};
 };
-std::ostream& operator<<(std::ostream& os, const AForm& form);
+std::ostream& operator<<(std::ostream& os, const Form& form);
 
 #endif //CPP05_FORM_H

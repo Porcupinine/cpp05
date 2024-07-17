@@ -18,7 +18,7 @@
 
 class Bureaucrat {
 public:
-	Bureaucrat() = default;
+	Bureaucrat() = delete;
 	Bureaucrat(std::string name, int grade);
 	~Bureaucrat() = default;
 	Bureaucrat(const Bureaucrat& cp);

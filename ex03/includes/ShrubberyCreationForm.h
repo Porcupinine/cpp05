@@ -18,13 +18,15 @@
 class ShrubberyCreationForm : public AForm {
 public:
 	ShrubberyCreationForm() = delete;
-	~ShrubberyCreationForm() = default;
+	~ShrubberyCreationForm() override = default;
 	explicit ShrubberyCreationForm (std::string target);
-	ShrubberyCreationForm(ShrubberyCreationForm& cp) = delete;
+	ShrubberyCreationForm(ShrubberyCreationForm& cp) = default;
 	ShrubberyCreationForm& operator=(ShrubberyCreationForm& cp) = delete;
 
 	void execute(Bureaucrat const & executor) const override;
 	void executeForm(AForm const & form) const override;
+	static AForm* makeShrubberyForm(const std::string& target);
+
 private:
 	std::string m_target;
 };

@@ -14,7 +14,7 @@
 #include <iostream>
 #include <utility>
 
-Bureaucrat::Bureaucrat(const Bureaucrat &cp) : m_grade(cp.m_grade), m_name(cp.m_name) {
+Bureaucrat::Bureaucrat(const Bureaucrat &cp) : m_name(cp.m_name),  m_grade(cp.m_grade) {
 	std::cout<<"Bureaucrat "<<m_name<<" is ready to make your life harder\n";
 }
 

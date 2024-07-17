@@ -13,14 +13,15 @@
 #include <fstream>
 #include <utility>
 #include <iostream>
-#include "ShrubberyCreationForm.h"
-#include "Bureaucrat.h"
+#include "../includes/ShrubberyCreationForm.h"
+#include "../includes/Bureaucrat.h"
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubbery", 145, 137), m_target(std::move(target)) {
 }
 
 void ShrubberyCreationForm::executeForm(const AForm &form) const{
-	std::ofstream out(m_target + "_shrubbery");
+	std::string formName = form.getName();
+	std::ofstream out(m_target + "_" + formName);
 	if(!out.is_open()) {
 		std::cout<<"Can't open file";
 	}
@@ -51,7 +52,11 @@ void ShrubberyCreationForm::executeForm(const AForm &form) const{
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 	if (this->getSignatureStatus() && executor.getGrade() <= this->getGradeToExec()) {
 		this->executeForm(*this);
-		return;
 	}
-	throw GradeTooLowException();
+	else
+		throw GradeTooLowException();
+}
+
+AForm *ShrubberyCreationForm::makeShrubberyForm(const std::string &target) {
+	return new ShrubberyCreationForm(target);
 }

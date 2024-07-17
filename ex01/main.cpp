@@ -17,7 +17,7 @@
 int main () {
 	Bureaucrat b1("Burro", 50);
 	Bureaucrat b2("Crata", 10);
-	AForm f1("AForm", 25, 11);
+	Form f1("Form", 25, 11);
 	std::cout<<"This is the form\n"<<f1<<"\n";
 	f1.signForm(b1);
 	f1.signForm(b2);
